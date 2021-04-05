@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id='type_incident_action' model='ir.actions.act_window'>
+        <field name="name">Tipo de incidente</field>
+        <field name="res_model">security.type_incident</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Tipo de incidente" id="type_incident_menu" parent="rio_request" action="type_incident_action" />
+
+    <!-- Form View -->
+    <record  model="ir.ui.view" id="type_incident_view_form">
+        <field name="name">Tipo de incidente</field>
+        <field name="model">security.type_incident</field>
+        <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="parent_id"/>
+                        </group>
+                    </group>
+                </form>
+      
+        </field>
+    </record>
+
+    <!-- Tree(list) View -->
+    <record id="type_incident_view_tree" model="ir.ui.view">
+        <field name="name">Tipo de incidente</field>
+        <field name="model">security.type_incident</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="parent_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="type_incident_view_search" model="ir.ui.view">
+        <field name="name">Tipo de incidente</field>
+        <field name="model">security.type_incident</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="parent_id"/>
+            </search>
+        </field>
+    </record>
+
+</odoo>

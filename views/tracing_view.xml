@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id='tracing_action' model='ir.actions.act_window'>
+        <field name="name">Investigaciones</field>
+        <field name="res_model">security.tracing_invest</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Form View -->
+    <record id="tracing_view_form" model="ir.ui.view">
+        <field name="name">Investigaciones</field>
+        <field name="model">security.tracing_invest</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="detalls"/>
+                    </group>
+                </group>
+                <group>
+                    <field name="multimedia"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+</odoo>

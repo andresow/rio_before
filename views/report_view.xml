@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id='rio_request_action' model='ir.actions.act_window'>
+        <field name="name">Reporte de incidencias operacionales(RIO)</field>
+        <field name="res_model">security.report</field>
+        <field name="view_mode">tree,form,graph</field>
+    </record>
+
+    <menuitem name="RIO" id="rio_request" sequence="4" web_icon="RIO,static/src/icon.jpg"/>
+    <menuitem name="RIO" id="rio_request_menu" parent="rio_request" action="rio_request_action"  />
+        <!-- Form View -->
+    <record id="security_report_view_form" model="ir.ui.view">
+        <field name="name">Formulario de reporte de incidencias operacionales</field>
+        <field name="model">security.report</field>
+        <field name="arch" type="xml">
+      
+                <form create="false" edit="true" state='generate'>              
+                    <group>
+                        <group>
+                            <field name="date" readonly="1"/>
+                            <field name="date_action"  attrs="{'readonly':[('state', '!=', 'fill_information')]}"/>
+                            <field name="position" attrs="{'readonly':[('state', '!=', 'fill_information')]}"/>
+                            <field name="direction" attrs="{'readonly':[('state', '!=', 'fill_information')]}"/>
+                            <field name="user_id" attrs="{'readonly':[('state', '!=', 'fill_information')]}"/>
+                            <field name="cedis_id" attrs="{'readonly':[('state', '!=', 'fill_information')]}"/>
+                        </group>
+                        <group>  
+                            <field name="type_incident_id" attrs="{'readonly':[('state', '!=', 'fill_information')]}"/>
+                            <field name="have_vehicle" attrs="{'readonly':[('state', '!=', 'fill_information')]}"/>
+                            <field name="patrimonial_loss" attrs="{'readonly':[('state', '!=', 'fill_information')]}"/>
+
+                            <field name="number_active"  attrs="{'invisible':[('patrimonial_loss','!=','active')], 'readonly':[('state', '!=', 'fill_information')]}" />
+                            <field name="product_code"  attrs="{'invisible':[('patrimonial_loss','!=','product')], 'readonly':[('state', '!=', 'fill_information')]}" />
+                            <field name="count"  attrs="{'invisible':[('patrimonial_loss','!=','product')], 'readonly':[('state', '!=', 'fill_information')]}" />
+                            <field name="instance"  attrs="{'invisible':[('patrimonial_loss','!=','plant')], 'readonly':[('state', '!=', 'fill_information')]}" />
+
+                            <field name="plates"  attrs="{'invisible':[('have_vehicle','=','no')], 'readonly':[('state', '!=', 'fill_information')]}" />
+                            <field name="routes"  attrs="{'invisible':[('have_vehicle','=','no')], 'readonly':[('state', '!=', 'fill_information')]}" />
+                            <field name="state" invisible="1" />
+                            <field name="informant"  attrs="{'invisible':['|',('state','=','fill_information'),('state','=','generate')], 'readonly':[('state', '!=', 'by_asign')]}" />
+                            <field name="invest_id"  attrs="{'invisible':['|',('state','=','fill_information'),('state','=','generate')], 'readonly':[('state', '!=', 'by_asign')]}" />
+                        </group>
+                    </group>
+                    <group>
+                        <field name="actions" attrs="{'readonly':[('state', '!=', 'fill_information')]}"/>
+                        <field name="tracing_id" attrs="{'invisible':[('state', '!=', 'asign'),('state','!=','in_progress'),('state','!=','finish'),('state','!=','finish')], 'readonly':[('state', '=', 'finish')]}" />
+                        <field name="declarations_id" attrs="{'invisible':[('state', '!=', 'asign'),('state','!=','in_progress'),('state','!=','finish'),('state','!=','finist_to_invest')], 'readonly':[('state', '=', 'finish'),('state', '=', 'finist_to_invest')]}"/>
+                    </group>   
+                    <group>
+                        <field name="coments_invest" groups="RIO.invests_users_rio"/>
+                    </group>   
+                    <group>
+                        <field name="coments_analytics" groups="RIO.anality_users_rio"/>
+                        <field name="recomendations" groups="RIO.anality_users_rio"/>
+                    </group>  
+                </form>
+         
+        </field>
+    </record>
+
+    <!-- Tree(list) View -->
+    <record id="report_request_view_tree" model="ir.ui.view">
+        <field name="name">Reporte de incidencias operacionales(RIO)</field>
+        <field name="model">security.report</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="id"/>
+                <field name="user_id"/>
+                <field name="date_action"/>
+                <field name="position"/>
+                <field name="direction"/>
+                <field name="actions"/>
+                <field name="type_incident_id"/>
+                <field name="cedis_id"/>
+                <field name="have_vehicle"/>
+                <field name="state"  decoration-primary="state == 'generate'"  decoration-success="state == 'by_asign'" decoration-warning="state == 'in_progress'"  decoration-danger="state == 'finish'" />
+            </tree>
+        </field>
+    </record>
+    
+    <record id="type_incident_view_search" model="ir.ui.view">
+        <field name="name">Tipo de incidente</field>
+        <field name="model">security.type_incident</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="parent_id"/>
+            </search>
+        </field>
+    </record>
+    <!-- Tree(list) View -->
+    <record id="report_request_view_graph" model="ir.ui.view">
+        <field name="name">Reporte de incidencias operacionales(RIO)</field>
+        <field name="model">security.report</field>
+        <field name="arch" type="xml">
+            <graph string="RIO reportes">
+                <field name="date_action"/>
+                <field name="position"/>
+                <field name="type_incident_id"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="report_view_search" model="ir.ui.view">
+        <field name="name">Reporte de incidencias operacionales(RIO)</field>
+        <field name="model">security.report</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="date_action"/>
+                <field name="position"/>
+            </search>
+        </field>
+    </record>
+
+</odoo>

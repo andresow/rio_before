@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <template id="index_custom" name="Custom Template">
+            <t t-call="website.layout">
+                <div  id="wrap"  class="oe_structure">
+                    <strong>Hola Mundo, estoy dentro del website</strong>
+                </div>
+            </t>
+        </template>
+</odoo>

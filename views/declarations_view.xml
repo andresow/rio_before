@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id='declaration_action' model='ir.actions.act_window'>
+        <field name="name">Declaraciones</field>
+        <field name="res_model">security.declaration</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Form View -->
+    <record id="declaration_view_form" model="ir.ui.view">
+        <field name="name">Declaraciones</field>
+        <field name="model">security.declaration</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="declaration"/>
+                    </group>
+                    <group>
+                        <field name="person"/>
+                    </group>
+                </group>
+                <group>
+                    <field name="detalls"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree(list) View -->
+    <record id="declaration_view_tree" model="ir.ui.view">
+        <field name="name">Declaraciones</field>
+        <field name="model">security.declaration</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="declaration"/>
+                <field name="person"/>
+                <field name="detalls"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="declaration_view_search" model="ir.ui.view">
+        <field name="name">Declaraciones</field>
+        <field name="model">security.declaration</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="declaration"/>
+                <field name="person"/>
+                <field name="detalls"/>
+            </search>
+        </field>
+    </record>
+
+</odoo>

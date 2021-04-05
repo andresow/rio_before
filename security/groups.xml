@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="group_rio_users" model="res.groups">
+            <field name="name">Usuarios_RIO</field>
+            <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+        </record>
+
+        <record id="generate_users_rio" model="res.groups">
+            <field name="name">Area de seguridad RIO</field>
+            <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+        </record>
+
+        <record id="anality_users_rio" model="res.groups">
+            <field name="name">Area de analisis RIO</field>
+            <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+        </record>
+
+        <record id="invests_users_rio" model="res.groups">
+            <field name="name">Investigadores RIO</field>
+            <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+        </record>
+
+        <record id="invest_rios_invest" model="res.groups">
+            <field name="name">Investigadores unicos RIO</field>
+            <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+        </record>
+    </data>
+
+</odoo>

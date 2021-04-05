@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id='invests_action' model='ir.actions.act_window'>
+        <field name="name">Investigadores</field>
+        <field name="res_model">security.invest</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Investigadores" id="invests_menu" parent="rio_request" action="invests_action" groups="RIO.invest_rios_invest"/>
+
+    <!-- Form View -->
+    <record  model="ir.ui.view" id="invests_view_form">
+        <field name="name">Formlario de Investigadores</field>
+        <field name="model">security.invest</field>
+        <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="user_id"/>
+                        </group>
+                    </group>
+                </form>
+          
+        </field>
+    </record>
+
+    <!-- Tree(list) View -->
+    <record id="invests_view_tree" model="ir.ui.view">
+        <field name="name">Investigadores</field>
+        <field name="model">security.invest</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="id"/>
+                <field name="name"/>
+                <field name="user_id"/>
+            </tree>
+        </field>
+    </record>
+
+
+</odoo>

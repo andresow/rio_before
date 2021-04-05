@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<odoo>
+
+    <!-- test Mail template are declared in a NOUPDATE block
+         so users can freely customize/delete them -->
+    <data noupdate="1">
+        <!--Email template -->
+        <record id="report_card_email_template" model="mail.template">
+            <field name="name">Envio de reporte RIO: Enviar Email</field>
+            <field name="model_id" ref="RIO.model_security_report"/>
+            <field name="email_from"></field>
+            <field name="email_to"></field>
+            <field name="subject"></field>
+            <field name="body_html" type="html">
+                <div style="margin 0px; padding: 0px">
+                    <p style="margin: 0px; padding: 0px; font-size:13px;">
+                        Encargado de area
+                        <br/><br/>
+                        Esto es tuyo 
+                        <br/><br/>
+                        Me permito contactarlo
+                    </p>
+                </div>
+            </field>
+        </record>
+    </data>
+</odoo>
